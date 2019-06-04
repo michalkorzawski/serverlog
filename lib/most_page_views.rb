@@ -1,6 +1,6 @@
 class MostPageViews
   def initialize(server_log)
-    @server_log = server_log.map { |line| line.split(' ') }
+    @server_log = server_log
   end
 
   def call
@@ -8,11 +8,9 @@ class MostPageViews
   end
 
   def to_s
-    puts 'list of webpages with most page views:'
-
-    result.each do |key, value|
-      puts "#{key} #{value} views"
-    end
+    result.map do |key, value|
+      "#{key} #{value} visits"
+    end.join("\n")
   end
 
   private

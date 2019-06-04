@@ -1,3 +1,5 @@
+require 'set'
+
 class UniquePageViews
   def initialize(server_log)
     @server_log = server_log
@@ -8,27 +10,21 @@ class UniquePageViews
   end
 
   def to_s
-    puts 'unique page views:'
-
-    result.each do |key, value|
-      puts "#{key} #{value} unique views"
-    end
+    result.map do |key, value|
+      "#{key} #{value} unique views"
+    end.join("\n")
   end
 
   private
 
   def uniq_set
-    set = Set.new
-
-    @server_log.each.with_object(set) do |line|
-      set.add(line.split(' '))
+    @server_log.each.with_object(Set.new) do |line, set|
+      set.add(line)
     end
   end
 
   def count_uniq_views
-    hash = Hash.new(0)
-
-    uniq_set.each.with_object(hash) do |entity_arr|
+    uniq_set.each.with_object(Hash.new(0)) do |entity_arr, hash|
       hash[entity_arr[0]] += 1
     end
   end
