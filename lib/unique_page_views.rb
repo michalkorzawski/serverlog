@@ -7,6 +7,14 @@ class UniquePageViews
     result
   end
 
+  def to_s
+    puts 'unique page views:'
+
+    result.each do |key, value|
+      puts "#{key} #{value} unique views"
+    end
+  end
+
   private
 
   def uniq_set
