@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require_relative 'lib/parser_main'
+
+ParserMain.new(File.open(*ARGV)).call
