@@ -1,29 +1,13 @@
-class MostPageViews
-  def initialize(server_log)
-    @server_log = server_log
-  end
+require_relative 'page_views_main'
 
-  def call
-    result
-  end
-
+class MostPageViews < PageViewsMain
   def to_s
-    result.map do |key, value|
-      "#{key} #{value} visits"
-    end.join("\n")
+    formatted_string('visits')
   end
 
   private
 
-  def count_page_views
-    hash = Hash.new(0)
-
-    @server_log.each.with_object(hash) do |entity_arr|
-      hash[entity_arr[0]] += 1
-    end
-  end
-
-  def result
-    @result ||= count_page_views.sort_by {|key, value| value}.reverse.to_h
+  def collection
+    @server_log
   end
 end
