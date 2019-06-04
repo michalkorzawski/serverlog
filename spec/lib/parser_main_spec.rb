@@ -9,12 +9,12 @@ RSpec.describe ParserMain do
   let(:formatted_output) do
     <<~END
     list of webpages with most page views:
-    /index 8 views
-    /help_page/1 6 views
-    /home 5 views
-    /about/2 4 views
-    /contact 4 views
-    /about 3 views
+    /index 8 visits
+    /help_page/1 6 visits
+    /home 5 visits
+    /about/2 4 visits
+    /contact 4 visits
+    /about 3 visits
 
     unique page views:
     /index 6 unique views
