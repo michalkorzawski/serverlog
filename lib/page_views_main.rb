@@ -22,6 +22,6 @@ class PageViewsMain
   end
 
   def result
-    @result ||= count_views(collection).sort_by {|key, value| value}.reverse.to_h
+    count_views(collection).sort_by {|key, value| value}.reverse.to_h
   end
 end
